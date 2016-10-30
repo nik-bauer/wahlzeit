@@ -6,6 +6,14 @@ public class Coordinate {
 	private final double longitude;
 
 	public Coordinate(double latitude, double longitude) {
+
+		if(latitude < -90.0 || latitude > 90.0) {
+			throw new IllegalArgumentException("Latitude of " + latitude + " exceeds valid boundaries: [-90.0, 90.0]");
+		}
+		if(longitude < -180.0 || longitude > 180.0) {
+			throw new IllegalArgumentException("Longitude of " + longitude + " exceeds valid boundaries: [-180.0, 180.0]");
+		}
+
 		this.latitude = latitude;
 		this.longitude = longitude;
 	}
