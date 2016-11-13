@@ -69,7 +69,7 @@ public class CarPhotoFactory extends PhotoFactory {
      * @methodtype factory
      * Creates a new photo with the specified id and additional fields
      */
-    public Photo createPhoto(PhotoId id, CarManufacturer manufacturer, CarClassification classification, String modelName, int numDoors, int numSeats, int engineHP, float engineDisplacementInLiters, float carLength, float carWidth) {
-        return new CarPhoto(id, manufacturer, classification, modelName, numDoors, numSeats, engineHP, engineDisplacementInLiters, carLength, carWidth);
+    public Photo createPhoto(PhotoId id, CarManufacturer manufacturer, CarClassification classification, String modelName, int productionYear, int numDoors, int numSeats, int engineHP) {
+        return new CarPhoto(id, manufacturer, classification, modelName, productionYear, numDoors, numSeats, engineHP);
     }
 }

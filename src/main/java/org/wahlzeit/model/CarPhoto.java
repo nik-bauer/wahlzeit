@@ -13,12 +13,11 @@ public class CarPhoto extends Photo {
     private CarManufacturer manufacturer;
     private CarClassification classification;
     private String modelName;
+    private int productionYear;
     private int numDoors;
     private int numSeats;
     private int engineHP;
-    private float engineDisplacementInLiters;
-    private float carLength;
-    private float carWidth;
+
 
     /**
      * @methodtype constructor
@@ -37,17 +36,15 @@ public class CarPhoto extends Photo {
     /**
      * @methodtype constructor
      */
-    public CarPhoto(PhotoId id, CarManufacturer manufacturer, CarClassification classification, String modelName, int numDoors, int numSeats, int engineHP, float engineDisplacementInLiters, float carLength, float carWidth) {
+    public CarPhoto(PhotoId id, CarManufacturer manufacturer, CarClassification classification, String modelName, int productionYear, int numDoors, int numSeats, int engineHP) {
         super(id);
         this.manufacturer = manufacturer;
         this.classification = classification;
         this.modelName = modelName;
+        this.productionYear = productionYear;
         this.numDoors = numDoors;
         this.numSeats = numSeats;
         this.engineHP = engineHP;
-        this.engineDisplacementInLiters = engineDisplacementInLiters;
-        this.carLength = carLength;
-        this.carWidth = carWidth;
     }
 
     /**
@@ -105,6 +102,24 @@ public class CarPhoto extends Photo {
     }
 
     /**
+     *
+     * @methodtype set
+     * @param productionYear
+     */
+    public void setProductionYear(int productionYear) {
+        this.productionYear = productionYear;
+    }
+
+    /**
+     *
+     * @methodtype
+     * @return Production year of the car.
+     */
+    public int getProductionYear() {
+        return this.productionYear;
+    }
+
+    /**
      * @methodtype set
      * @param numDoors
      */
@@ -150,53 +165,5 @@ public class CarPhoto extends Photo {
      */
     public int getEngineHP() {
         return this.engineHP;
-    }
-
-    /**
-     * @methodtype set
-     * @param engineDisplacementInLiters
-     */
-    public void setEngineDisplacementInLiters(int engineDisplacementInLiters) {
-        this.engineDisplacementInLiters = engineDisplacementInLiters;
-    }
-
-    /**
-     * @methodtype get
-     * @return Total displacement of the car'S engine.
-     */
-    public float getEngineDisplacementInLiters() {
-        return this.engineDisplacementInLiters;
-    }
-
-    /**
-     * @methodtype set
-     * @param carLength
-     */
-    public void setCarLength(float carLength) {
-        this.carLength = carLength;
-    }
-
-    /**
-     * @methodtype get
-     * @return Length of the car.
-     */
-    public float getCarLength() {
-        return this.carLength;
-    }
-
-    /**
-     * @methodtype set
-     * @param carWidth
-     */
-    public void setCarWidth(float carWidth) {
-        this.carWidth = carWidth;
-    }
-
-    /**
-     * @methodtype get
-     * @return Width of the car.
-     */
-    public float getCarWidth() {
-        return this.carWidth;
     }
 }
