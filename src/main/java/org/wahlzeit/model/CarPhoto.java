@@ -12,6 +12,7 @@ public class CarPhoto extends Photo {
     // TODO: maybe add color in case the actual car on the photo should be described instead of the car in general
     private CarManufacturer manufacturer;
     private CarClassification classification;
+    private String modelName;
     private int numDoors;
     private int numSeats;
     private int engineHP;
@@ -36,16 +37,35 @@ public class CarPhoto extends Photo {
     /**
      * @methodtype constructor
      */
-    public CarPhoto(PhotoId id, CarManufacturer manufacturer, CarClassification classification, int numDoors, int numSeats, int engineHP, float engineDisplacementInLiters, float carLength, float carWidth) {
+    public CarPhoto(PhotoId id, CarManufacturer manufacturer, CarClassification classification, String modelName, int numDoors, int numSeats, int engineHP, float engineDisplacementInLiters, float carLength, float carWidth) {
         super(id);
         this.manufacturer = manufacturer;
         this.classification = classification;
+        this.modelName = modelName;
         this.numDoors = numDoors;
         this.numSeats = numSeats;
         this.engineHP = engineHP;
         this.engineDisplacementInLiters = engineDisplacementInLiters;
         this.carLength = carLength;
         this.carWidth = carWidth;
+    }
+
+    /**
+     *
+     * @methodtype set
+     * @param manufacturer
+     */
+    public void setManufacturer(CarManufacturer manufacturer) {
+        this.manufacturer = manufacturer;
+    }
+
+    /**
+     *
+     * @methodtype get
+     * @return Manufacturer of the car.
+     */
+    public CarManufacturer getManufacturer() {
+        return this.manufacturer;
     }
 
     /**
@@ -64,6 +84,24 @@ public class CarPhoto extends Photo {
      */
     public CarClassification getClassification() {
         return this.classification;
+    }
+
+    /**
+     *
+     * @methodtype set
+     * @param modelName
+     */
+    public void setModelName(String modelName) {
+        this.modelName = modelName;
+    }
+
+    /**
+     *
+     * @methodtype get
+     * @return Model name of the car.
+     */
+    public String getModelName() {
+        return this.modelName;
     }
 
     /**
