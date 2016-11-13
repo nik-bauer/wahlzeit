@@ -10,7 +10,7 @@ public class CarPhotoManager extends PhotoManager {
     /**
      *
      */
-    protected static final PhotoManager instance = new CarPhotoManager();
+    protected static final CarPhotoManager instance = new CarPhotoManager();
 
     private static final Logger log = Logger.getLogger(CarPhotoManager.class.getName());
 
