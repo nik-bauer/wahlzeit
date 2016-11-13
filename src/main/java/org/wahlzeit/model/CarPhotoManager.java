@@ -18,10 +18,6 @@ public class CarPhotoManager extends PhotoManager {
         super();
     }
 
-    public static PhotoManager getInstance() {
-        return instance;
-    }
-
     /**
      *
      * @param classification
