@@ -14,6 +14,10 @@ public class CarPhotoManager extends PhotoManager {
 
     private static final Logger log = Logger.getLogger(CarPhotoManager.class.getName());
 
+    public CarPhotoManager() {
+        super();
+    }
+
     /**
      *
      * @param classification
