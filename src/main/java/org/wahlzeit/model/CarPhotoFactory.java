@@ -42,12 +42,12 @@ public class CarPhotoFactory extends PhotoFactory {
     /**
      * Method to set the singleton instance of PhotoFactory.
      */
-    protected static synchronized void setInstance(CarPhotoFactory photoFactory) {
+    protected static synchronized void setInstance(CarPhotoFactory carPhotoFactory) {
         if (instance != null) {
             throw new IllegalStateException("attempt to initialize PhotoFactory twice");
         }
 
-        instance = photoFactory;
+        instance = carPhotoFactory;
     }
 
     /**
