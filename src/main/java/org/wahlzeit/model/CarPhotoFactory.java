@@ -53,7 +53,7 @@ public class CarPhotoFactory extends PhotoFactory {
     /**
      * @methodtype factory
      */
-    public Photo createPhoto() {
+    public CarPhoto createPhoto() {
         return new CarPhoto();
     }
 
@@ -61,15 +61,15 @@ public class CarPhotoFactory extends PhotoFactory {
      * @methodtype factory
      * Creates a new photo with the specified id
      */
-    public Photo createPhoto(PhotoId id) {
-        return new Photo(id);
+    public CarPhoto createPhoto(PhotoId id) {
+        return new CarPhoto(id);
     }
 
     /**
      * @methodtype factory
      * Creates a new photo with the specified id and additional fields
      */
-    public Photo createPhoto(PhotoId id, CarManufacturer manufacturer, CarClassification classification, String modelName, int productionYear, int numDoors, int numSeats, int engineHP) {
+    public CarPhoto createPhoto(PhotoId id, CarManufacturer manufacturer, CarClassification classification, String modelName, int productionYear, int numDoors, int numSeats, int engineHP) {
         return new CarPhoto(id, manufacturer, classification, modelName, productionYear, numDoors, numSeats, engineHP);
     }
 }
