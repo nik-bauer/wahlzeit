@@ -9,6 +9,9 @@ import org.wahlzeit.model.persistence.*;
 
 @Suite.SuiteClasses({
         AccessRightsTest.class,
+        CarPhotoFactoryTest.class,
+        CarPhotoManagerTest.class,
+        CarPhotoTest.class,
         CoordinateTest.class,
         FlagReasonTest.class,
         GenderTest.class,
