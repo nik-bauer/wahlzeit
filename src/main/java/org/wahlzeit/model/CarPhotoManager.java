@@ -7,15 +7,14 @@ import java.util.logging.Logger;
 
 public class CarPhotoManager extends PhotoManager {
 
-    /**
-     *
-     */
-    protected static CarPhotoManager instance = new CarPhotoManager();
+    static {
+        instance = new CarPhotoManager();
+    }
 
     private static final Logger log = Logger.getLogger(CarPhotoManager.class.getName());
 
-    public static CarPhotoManager getInstance() {
-        return instance;
+    public static synchronized CarPhotoManager getInstance() {
+        return (CarPhotoManager)instance;
     }
 
     /**
