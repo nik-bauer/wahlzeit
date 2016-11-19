@@ -110,7 +110,7 @@ public class CartesianCoordinate implements Coordinate {
      * @param sphericCoordinate
      * @return conversion to cartesian coordinate
      */
-    private CartesianCoordinate convertSphericalToCartesian(SphericCoordinate sphericCoordinate) {
+    public CartesianCoordinate convertSphericalToCartesian(SphericCoordinate sphericCoordinate) {
         double x = sphericCoordinate.EARTH_RADIUS_KM * cos(sphericCoordinate.getLatitude()) * cos(sphericCoordinate.getLongitude());
         double y = sphericCoordinate.EARTH_RADIUS_KM * sin(sphericCoordinate.getLatitude()) * sin(sphericCoordinate.getLongitude());
         double z = sphericCoordinate.EARTH_RADIUS_KM * sin(sphericCoordinate.getLatitude());

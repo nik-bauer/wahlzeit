@@ -71,6 +71,9 @@ public class SphericCoordinate implements Coordinate {
      * @param latitude
      */
     public void setLatitude(double latitude) {
+        if(latitude < -90.0 || latitude > 90.0) {
+            throw new IllegalArgumentException("Latitude of " + latitude + " exceeds valid boundaries: [-90.0, 90.0]");
+        }
         this.latitude = latitude;
     }
 
@@ -87,6 +90,9 @@ public class SphericCoordinate implements Coordinate {
      * @param longitude
      */
     public void setLongitude(double longitude) {
+        if(longitude < -180.0 || longitude > 180.0) {
+            throw new IllegalArgumentException("Longitude of " + longitude + " exceeds valid boundaries: [-180.0, 180.0]");
+        }
         this.longitude = longitude;
     }
 
@@ -140,7 +146,7 @@ public class SphericCoordinate implements Coordinate {
      * @param cartesianCoordinate
      * @return conversion to spherical coordinate
      */
-    private SphericCoordinate convertCartesianToSpherical(CartesianCoordinate cartesianCoordinate) {
+    public SphericCoordinate convertCartesianToSpherical(CartesianCoordinate cartesianCoordinate) {
         double radius = sqrt(pow(cartesianCoordinate.getX(), 2) + pow(cartesianCoordinate.getY(), 2) + pow(cartesianCoordinate.getZ(), 2));
         double latitude = acos(cartesianCoordinate.getZ() / radius);
         double longitude = atan2(cartesianCoordinate.getY(), cartesianCoordinate.getX());
