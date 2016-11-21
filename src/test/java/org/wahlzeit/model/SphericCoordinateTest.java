@@ -67,15 +67,4 @@ public class SphericCoordinateTest {
         coord.setLongitude(56.78);
         assertEquals(56.78, coord.getLongitude(), 0);
     }
-
-    @Ignore
-	@Test
-	public void getDistanceWithConversionTest() {
-		CartesianCoordinate cartErlangen = new CartesianCoordinate(123, 456, 789);
-		System.out.println(coordHamburg.convertCartesianToSpherical(cartErlangen).getLatitude()+" "+
-				coordHamburg.convertCartesianToSpherical(cartErlangen).getLongitude()+" "+
-				coordHamburg.convertCartesianToSpherical(cartErlangen).getRadius());
-		assertEquals(448.01, coordHamburg.getDistance(cartErlangen), 1);
-	}
-
 }
