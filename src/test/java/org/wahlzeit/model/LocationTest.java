@@ -8,12 +8,12 @@ import static junit.framework.TestCase.assertEquals;
 
 public class LocationTest {
 
-	private  Coordinate c;
+	private Coordinate c;
 	private Location l;
 
 	@Before
 	public void initLocation() {
-		c = new Coordinate(12.34, 56.78);
+		c = new SphericCoordinate(12.34, 56.78);
 		l = new Location(c);
 	}
 
