@@ -111,9 +111,9 @@ public class CartesianCoordinate implements Coordinate {
      * @return conversion to cartesian coordinate
      */
     public CartesianCoordinate convertSphericalToCartesian(SphericCoordinate sphericCoordinate) {
-        double x = sphericCoordinate.EARTH_RADIUS_KM * cos(sphericCoordinate.getLatitude()) * cos(sphericCoordinate.getLongitude());
-        double y = sphericCoordinate.EARTH_RADIUS_KM * sin(sphericCoordinate.getLatitude()) * sin(sphericCoordinate.getLongitude());
-        double z = sphericCoordinate.EARTH_RADIUS_KM * sin(sphericCoordinate.getLatitude());
+        double x = sphericCoordinate.getRadius() * cos(sphericCoordinate.getLongitude()) * sin(sphericCoordinate.getLatitude());
+        double y = sphericCoordinate.getRadius() * sin(sphericCoordinate.getLongitude()) * sin(sphericCoordinate.getLatitude());
+        double z = sphericCoordinate.getRadius() * cos(sphericCoordinate.getLatitude());
 
         return new CartesianCoordinate(x, y, z);
     }
