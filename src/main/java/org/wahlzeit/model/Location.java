@@ -2,24 +2,24 @@ package org.wahlzeit.model;
 
 public class Location {
 
-	public static final Location NO_LOCATION = new Location(null);
+	public static final Location NO_LOCATION = new Location();
 
-	private Coordinate coordinate;
+	private SphericCoordinate coordinate;
 
 	public Location() {
 
 	}
 
-	public Location(Coordinate coordinate) {
+	public Location(SphericCoordinate coordinate) {
 		// TODO: check if coordinate is null
 		this.coordinate = coordinate;
 	}
 
-	public void setCoordinate(Coordinate coordinate) {
+	public void setCoordinate(SphericCoordinate coordinate) {
 		this.coordinate = coordinate;
 	}
 
-	public Coordinate getCoordinate() {
+	public SphericCoordinate getCoordinate() {
 		return coordinate;
 	}
 
