@@ -14,7 +14,7 @@ public class LocationTest {
 	@Before
 	public void initLocation() {
 		c = new SphericCoordinate(12.34, 56.78);
-		l = new Location(c);
+		l = new Location((SphericCoordinate)c);
 	}
 
 	@Test

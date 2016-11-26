@@ -2,16 +2,10 @@ package org.wahlzeit.model;
 
 public class Location {
 
-	public static final Location NO_LOCATION = new Location();
-
 	private SphericCoordinate coordinate;
 
-	public Location() {
-
-	}
 
 	public Location(SphericCoordinate coordinate) {
-		// TODO: check if coordinate is null
 		this.coordinate = coordinate;
 	}
 

@@ -13,7 +13,7 @@ public class CarPhotoManager extends PhotoManager {
 
     private static final Logger log = Logger.getLogger(CarPhotoManager.class.getName());
 
-    public static synchronized CarPhotoManager getInstance() {
+    public static CarPhotoManager getInstance() {
         return (CarPhotoManager)instance;
     }
 
