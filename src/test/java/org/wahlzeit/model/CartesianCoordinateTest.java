@@ -25,23 +25,6 @@ public class CartesianCoordinateTest {
     }
 
     @Test
-    public void getDistanceTest() {
-        assertEquals(1.73, coordOrigin.getDistance(coord_1_1_1), 0.1);
-        assertEquals(1.73, coord_1_1_1.getDistance(coordOrigin), 0.1);
-    }
-
-    @Test
-    public void convertSphericalToCartesianTest() {
-        SphericCoordinate sphCoord = new SphericCoordinate(0.64, 1.11, 3.74);
-        CartesianCoordinate convCoord = new CartesianCoordinate();
-        convCoord = convCoord.convertSphericalToCartesian(sphCoord);
-
-        assertEquals(1, convCoord.getX(), 0.1);
-        assertEquals(2, convCoord.getY(), 0.1);
-        assertEquals(3, convCoord.getZ(), 0.1);
-    }
-
-    @Test
     public void getterSetterTest() {
         CartesianCoordinate coord = new CartesianCoordinate();
 		coord.setX(1);
@@ -54,4 +37,20 @@ public class CartesianCoordinateTest {
         assertEquals(3, coord.getZ(), 0);
     }
 
+	@Test
+	public void getDistanceTest() {
+		assertEquals(1.73, coordOrigin.getDistance(coord_1_1_1), 0.1);
+		assertEquals(1.73, coord_1_1_1.getDistance(coordOrigin), 0.1);
+	}
+
+	@Test
+	public void asCartesianTest() {
+		assertEquals(coord_1_1_1, coord_1_1_1.asCartesian());
+	}
+
+	@Test
+	public void isEqualTest() {
+		assertTrue(coord_1_1_1.isEqual(coord_1_1_1));
+		assertFalse(coord_1_1_1.isEqual(coordOrigin));
+	}
 }

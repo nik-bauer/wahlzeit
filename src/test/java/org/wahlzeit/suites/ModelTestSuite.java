@@ -8,17 +8,18 @@ import org.wahlzeit.model.persistence.*;
 @RunWith(Suite.class)
 
 @Suite.SuiteClasses({
+		AbstractCoordinateTest.class,
         AccessRightsTest.class,
         CarPhotoFactoryTest.class,
         CarPhotoManagerTest.class,
         CarPhotoTest.class,
-        CartesianCoordinate.class,
+        CartesianCoordinateTest.class,
         FlagReasonTest.class,
         GenderTest.class,
         GuestTest.class,
         LocationTest.class,
         PhotoFilterTest.class,
-		SphericCoordinate.class,
+		SphericCoordinateTest.class,
         TagsTest.class,
         UserStatusTest.class,
         ValueTest.class,
