@@ -1,8 +1,6 @@
 package org.wahlzeit.model;
 
-import static java.lang.Math.*;
-
-public class CartesianCoordinate implements Coordinate {
+public class CartesianCoordinate extends AbstractCoordinate {
 
     private double x;
     private double y;
@@ -78,43 +76,11 @@ public class CartesianCoordinate implements Coordinate {
     }
 
     /**
-     *
-     * @param coordinate
-     * @return shortest distance between both coordinates in km
-     * @throws IllegalArgumentException
+     * @methodtype conversion
+     * @return cartesian representation
      */
     @Override
-    public double getDistance(Coordinate coordinate) throws IllegalArgumentException {
-        CartesianCoordinate coord;
-
-        if(coordinate instanceof SphericCoordinate) {
-            coord = convertSphericalToCartesian((SphericCoordinate) coordinate);
-        } else if (coordinate instanceof CartesianCoordinate) {
-            coord = (CartesianCoordinate) coordinate;
-        } else {
-            throw new IllegalArgumentException("Unknown coordinate type.");
-        }
-
-        double deltaX = pow(coord.getX() - x, 2);
-        double deltaY = pow(coord.getY() - y, 2);
-        double deltaZ = pow(coord.getZ() - z, 2);
-
-        // pythagoras's theorem
-        double distance = sqrt(deltaX + deltaY + deltaZ);
-
-        return distance;
-    }
-
-    /**
-     *
-     * @param sphericCoordinate
-     * @return conversion to cartesian coordinate
-     */
-    public CartesianCoordinate convertSphericalToCartesian(SphericCoordinate sphericCoordinate) {
-        double x = sphericCoordinate.getRadius() * cos(sphericCoordinate.getLongitude()) * sin(sphericCoordinate.getLatitude());
-        double y = sphericCoordinate.getRadius() * sin(sphericCoordinate.getLongitude()) * sin(sphericCoordinate.getLatitude());
-        double z = sphericCoordinate.getRadius() * cos(sphericCoordinate.getLatitude());
-
-        return new CartesianCoordinate(x, y, z);
+    public CartesianCoordinate asCartesian() {
+        return this;
     }
 }

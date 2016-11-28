@@ -2,7 +2,7 @@ package org.wahlzeit.model;
 
 import static java.lang.Math.*;
 
-public class SphericCoordinate implements Coordinate {
+public class SphericCoordinate extends AbstractCoordinate {
 
     public final double EARTH_RADIUS_KM = 6371.0;
 
@@ -112,45 +112,16 @@ public class SphericCoordinate implements Coordinate {
         this.radius = radius;
     }
 
-    /**
-     *
-     * @param coordinate
-     * @return great-circle distance between both coordinates in km
-     * @throws IllegalArgumentException
-     */
-    @Override
-    public double getDistance(Coordinate coordinate) throws IllegalArgumentException {
-        SphericCoordinate coord;
+	/**
+	 * @methodtype conversion
+	 * @return cartesian representation
+	 */
+	@Override
+	public CartesianCoordinate asCartesian() {
+        double x = radius * sin(toRadians(longitude)) * cos(toRadians(latitude));
+        double y = radius * sin(toRadians(longitude)) * sin(toRadians(latitude));
+        double z = radius * cos(toRadians(longitude));
 
-        if(coordinate instanceof CartesianCoordinate) {
-            coord = convertCartesianToSpherical((CartesianCoordinate) coordinate);
-        } else if (coordinate instanceof SphericCoordinate) {
-            coord = (SphericCoordinate) coordinate;
-        } else {
-            throw new IllegalArgumentException("Unknown coordinate type.");
-        }
-
-        double absDiffLat = toRadians(abs(coord.latitude - latitude));
-        double absDiffLong = toRadians(abs(coord.longitude - longitude));
-
-        double root = pow(sin(absDiffLat / 2), 2) + cos(toRadians(latitude)) * cos(toRadians(coord.latitude)) * pow(sin(absDiffLong / 2), 2);
-        double centralAngle = 2 * asin(sqrt(root));
-
-        double distance = EARTH_RADIUS_KM * centralAngle;
-
-        return distance;
-    }
-
-    /**
-     *
-     * @param cartesianCoordinate
-     * @return conversion to spherical coordinate
-     */
-    public SphericCoordinate convertCartesianToSpherical(CartesianCoordinate cartesianCoordinate) {
-        double radius = sqrt(pow(cartesianCoordinate.getX(), 2) + pow(cartesianCoordinate.getY(), 2) + pow(cartesianCoordinate.getZ(), 2));
-        double latitude = acos(cartesianCoordinate.getZ() / radius);
-        double longitude = atan2(cartesianCoordinate.getY(), cartesianCoordinate.getX());
-
-        return new SphericCoordinate(latitude, longitude, radius);
+        return new CartesianCoordinate(x, y, z);
     }
 }

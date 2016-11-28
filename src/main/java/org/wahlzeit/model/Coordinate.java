@@ -9,4 +9,13 @@ public interface Coordinate {
      * @return distance in km
      */
     public double getDistance(Coordinate coordinate);
+
+	/**
+	 *
+	 * @param coordinate
+	 * @return
+	 */
+    public boolean isEqual(Coordinate coordinate);
+
+	public CartesianCoordinate asCartesian();
 }
