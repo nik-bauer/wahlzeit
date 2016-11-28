@@ -48,7 +48,7 @@ public class CarPhotoManagerTest {
 
     @Test
     public void classTest() {
-        Assert.assertEquals(CarPhotoManager.class, carPhotoManager);
+        Assert.assertTrue(carPhotoManager instanceof CarPhotoManager);
     }
 
     // TODO: fix exception for findBy tests: java.lang.IllegalStateException: You have not started an Objectify context. You are probably missing the ObjectifyFilter.
