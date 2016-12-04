@@ -8,6 +8,8 @@ public abstract class AbstractCoordinate implements Coordinate {
 
 	public double getDistance(Coordinate coordinate) {
 
+		assertCoordinateNotNull(coordinate);
+
 		CartesianCoordinate thisCoord = this.asCartesian();
 		CartesianCoordinate thatCoord = coordinate.asCartesian();
 
@@ -18,10 +20,16 @@ public abstract class AbstractCoordinate implements Coordinate {
 		// pythagoras's theorem
 		double distance = sqrt(deltaX + deltaY + deltaZ);
 
+		assertDistanceIsValid(distance);
+		assertClassInvariants();
+
 		return distance;
 	}
 
 	public boolean isEqual(Coordinate coordinate) {
+
+		assertCoordinateNotNull(coordinate);
+
 		if(this.getDistance(coordinate) <= EQUALS_DELTA) {
 			return true;
 		}
@@ -29,4 +37,29 @@ public abstract class AbstractCoordinate implements Coordinate {
 	}
 
 	public abstract CartesianCoordinate asCartesian();
+
+	/**
+	 * @methodtype assert
+	 * @param coordinate
+	 */
+	protected void assertCoordinateNotNull(Coordinate coordinate) {
+		if(coordinate == null) {
+			throw new IllegalArgumentException("Coordinate must not be null!");
+		}
+	}
+
+	/**
+	 * @metodtype assert
+	 * @param distance
+	 */
+	protected void assertDistanceIsValid(double distance) {
+		if(distance < 0) {
+			throw new IllegalArgumentException("Distance must not be negative!");
+		}
+	}
+
+	/**
+	 * @methodtype assert
+	 */
+	protected abstract void assertClassInvariants();
 }

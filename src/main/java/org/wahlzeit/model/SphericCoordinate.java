@@ -4,7 +4,7 @@ import static java.lang.Math.*;
 
 public class SphericCoordinate extends AbstractCoordinate {
 
-    public final double EARTH_RADIUS_KM = 6371.0;
+    static final double EARTH_RADIUS_KM = 6371.0;
 
     private double latitude;
     private double longitude;
@@ -24,18 +24,8 @@ public class SphericCoordinate extends AbstractCoordinate {
      * @param latitude
      * @param longitude
      */
-    public SphericCoordinate(double latitude, double longitude) throws IllegalArgumentException {
-
-        if(latitude < -90.0 || latitude > 90.0) {
-            throw new IllegalArgumentException("Latitude of " + latitude + " exceeds valid boundaries: [-90.0, 90.0]");
-        }
-        if(longitude < -180.0 || longitude > 180.0) {
-            throw new IllegalArgumentException("Longitude of " + longitude + " exceeds valid boundaries: [-180.0, 180.0]");
-        }
-
-        this.latitude = latitude;
-        this.longitude = longitude;
-        this.radius = EARTH_RADIUS_KM;
+    public SphericCoordinate(double latitude, double longitude) {
+        this(latitude, longitude, EARTH_RADIUS_KM);
     }
 
     /**
@@ -46,16 +36,15 @@ public class SphericCoordinate extends AbstractCoordinate {
      */
     public SphericCoordinate(double latitude, double longitude, double radius) throws IllegalArgumentException {
 
-        if(latitude < -90.0 || latitude > 90.0) {
-            throw new IllegalArgumentException("Latitude of " + latitude + " exceeds valid boundaries: [-90.0, 90.0]");
-        }
-        if(longitude < -180.0 || longitude > 180.0) {
-            throw new IllegalArgumentException("Longitude of " + longitude + " exceeds valid boundaries: [-180.0, 180.0]");
-        }
+        assertLatitudeIsValid(latitude);
+        assertLongitudeIsValid(longitude);
+        assertRadiusIsValid(radius);
 
         this.latitude = latitude;
         this.longitude = longitude;
         this.radius = radius;
+
+        assertClassInvariants();
     }
 
     /**
@@ -71,10 +60,11 @@ public class SphericCoordinate extends AbstractCoordinate {
      * @param latitude
      */
     public void setLatitude(double latitude) {
-        if(latitude < -90.0 || latitude > 90.0) {
-            throw new IllegalArgumentException("Latitude of " + latitude + " exceeds valid boundaries: [-90.0, 90.0]");
-        }
+        assertLatitudeIsValid(latitude);
+
         this.latitude = latitude;
+
+        assertClassInvariants();
     }
 
     /**
@@ -90,10 +80,11 @@ public class SphericCoordinate extends AbstractCoordinate {
      * @param longitude
      */
     public void setLongitude(double longitude) {
-        if(longitude < -180.0 || longitude > 180.0) {
-            throw new IllegalArgumentException("Longitude of " + longitude + " exceeds valid boundaries: [-180.0, 180.0]");
-        }
+        assertLongitudeIsValid(longitude);
+
         this.longitude = longitude;
+
+        assertClassInvariants();
     }
 
     /**
@@ -109,7 +100,11 @@ public class SphericCoordinate extends AbstractCoordinate {
      * @param radius
      */
     public void setRadius(double radius) {
+        assertRadiusIsValid(radius);
+
         this.radius = radius;
+
+        assertClassInvariants();
     }
 
 	/**
@@ -118,10 +113,56 @@ public class SphericCoordinate extends AbstractCoordinate {
 	 */
 	@Override
 	public CartesianCoordinate asCartesian() {
+        assertLatitudeIsValid(latitude);
+        assertLongitudeIsValid(longitude);
+        assertRadiusIsValid(radius);
+
         double x = radius * sin(toRadians(longitude)) * cos(toRadians(latitude));
         double y = radius * sin(toRadians(longitude)) * sin(toRadians(latitude));
         double z = radius * cos(toRadians(longitude));
 
+        assertClassInvariants();
+
         return new CartesianCoordinate(x, y, z);
+    }
+
+    /**
+     * @methodtype assert
+     * @param latitude
+     */
+    private void assertLatitudeIsValid(double latitude) {
+        if(latitude < -90.0 || latitude > 90.0 || Double.isNaN(latitude)) {
+            throw new IllegalArgumentException("Latitude of " + latitude + " exceeds valid boundaries: [-90.0, 90.0]");
+        }
+    }
+
+    /**
+     * @methodtype assert
+     * @param longitude
+     */
+    private void assertLongitudeIsValid(double longitude) {
+        if(longitude < -180.0 || longitude > 180.0 || Double.isNaN(longitude)) {
+            throw new IllegalArgumentException("Longitude of " + longitude + " exceeds valid boundaries: [-180.0, 180.0]");
+        }
+    }
+
+    /**
+     * @methodtype assert
+     * @param radius
+     */
+    private void assertRadiusIsValid(double radius) {
+        if(radius < 0.0 || Double.isNaN(radius)) {
+            throw new IllegalArgumentException("Radius of " + radius + " exceeds valid boundaries: [0.0, " + Double.MAX_VALUE + "[");
+        }
+    }
+
+    /**
+     * @methodtype assert
+     */
+    @Override
+    protected void assertClassInvariants() {
+        assertLatitudeIsValid(this.latitude);
+        assertLongitudeIsValid(this.longitude);
+        assertRadiusIsValid(this.radius);
     }
 }
