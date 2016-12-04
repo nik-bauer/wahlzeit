@@ -39,6 +39,11 @@ public class SphericCoordinateTest {
 		SphericCoordinate coord = new SphericCoordinate(0.0, 181.0);
 	}
 
+	@Test (expected = IllegalArgumentException.class)
+	public void constructorValidationTest5(){
+		SphericCoordinate coord = new SphericCoordinate(0.0, 0.0, -1.0);
+	}
+
 	@Test
 	public void getterSetterTest() {
 		SphericCoordinate coord = new SphericCoordinate();
