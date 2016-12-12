@@ -2,6 +2,7 @@ package org.wahlzeit.model;
 
 import org.junit.Before;
 import org.junit.Test;
+import org.wahlzeit.utils.CustomExceptions.CoordinateParameterException;
 
 import static org.junit.Assert.*;
 
@@ -39,8 +40,12 @@ public class CartesianCoordinateTest {
 
 	@Test
 	public void getDistanceTest() {
-		assertEquals(1.73, coordOrigin.getDistance(coord_1_1_1), 0.1);
-		assertEquals(1.73, coord_1_1_1.getDistance(coordOrigin), 0.1);
+        try {
+            assertEquals(1.73, coordOrigin.getDistance(coord_1_1_1), 0.1);
+            assertEquals(1.73, coord_1_1_1.getDistance(coordOrigin), 0.1);
+        } catch (CoordinateParameterException e) {
+            e.printStackTrace();
+        }
 	}
 
 	@Test
@@ -50,7 +55,11 @@ public class CartesianCoordinateTest {
 
 	@Test
 	public void isEqualTest() {
-		assertTrue(coord_1_1_1.isEqual(coord_1_1_1));
-		assertFalse(coord_1_1_1.isEqual(coordOrigin));
+        try {
+            assertTrue(coord_1_1_1.isEqual(coord_1_1_1));
+            assertFalse(coord_1_1_1.isEqual(coordOrigin));
+        } catch (CoordinateParameterException e) {
+            e.printStackTrace();
+        }
 	}
 }

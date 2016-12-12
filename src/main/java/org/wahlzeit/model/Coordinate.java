@@ -1,6 +1,8 @@
 package org.wahlzeit.model;
 
 
+import org.wahlzeit.utils.CustomExceptions.CoordinateParameterException;
+
 public interface Coordinate {
 
     /**
@@ -8,14 +10,14 @@ public interface Coordinate {
      * @param coordinate
      * @return distance in km
      */
-    public double getDistance(Coordinate coordinate);
+    public double getDistance(Coordinate coordinate) throws CoordinateParameterException;
 
 	/**
 	 *
 	 * @param coordinate
 	 * @return
 	 */
-    public boolean isEqual(Coordinate coordinate);
+    public boolean isEqual(Coordinate coordinate) throws CoordinateParameterException;
 
-	public CartesianCoordinate asCartesian();
+	public CartesianCoordinate asCartesian() throws CoordinateParameterException;
 }

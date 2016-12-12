@@ -1,14 +1,17 @@
 package org.wahlzeit.model;
 
+import org.wahlzeit.utils.CustomExceptions.CoordinateParameterException;
+
 import static java.lang.Math.*;
+import static org.wahlzeit.utils.CustomAssert.assertNotNull;
 
 public abstract class AbstractCoordinate implements Coordinate {
 
 	public double EQUALS_DELTA = 0.01;
 
-	public double getDistance(Coordinate coordinate) {
+	public double getDistance(Coordinate coordinate) throws CoordinateParameterException {
 
-		assertCoordinateNotNull(coordinate);
+		assertNotNull(coordinate);
 
 		CartesianCoordinate thisCoord = this.asCartesian();
 		CartesianCoordinate thatCoord = coordinate.asCartesian();
@@ -26,9 +29,9 @@ public abstract class AbstractCoordinate implements Coordinate {
 		return distance;
 	}
 
-	public boolean isEqual(Coordinate coordinate) {
+	public boolean isEqual(Coordinate coordinate) throws CoordinateParameterException {
 
-		assertCoordinateNotNull(coordinate);
+		assertNotNull(coordinate);
 
 		if(this.getDistance(coordinate) <= EQUALS_DELTA) {
 			return true;
@@ -36,17 +39,7 @@ public abstract class AbstractCoordinate implements Coordinate {
 		return false;
 	}
 
-	public abstract CartesianCoordinate asCartesian();
-
-	/**
-	 * @methodtype assert
-	 * @param coordinate
-	 */
-	protected void assertCoordinateNotNull(Coordinate coordinate) {
-		if(coordinate == null) {
-			throw new IllegalArgumentException("Coordinate must not be null!");
-		}
-	}
+	public abstract CartesianCoordinate asCartesian() throws CoordinateParameterException;
 
 	/**
 	 * @metodtype assert
@@ -61,5 +54,5 @@ public abstract class AbstractCoordinate implements Coordinate {
 	/**
 	 * @methodtype assert
 	 */
-	protected abstract void assertClassInvariants();
+	protected abstract void assertClassInvariants() throws CoordinateParameterException;
 }

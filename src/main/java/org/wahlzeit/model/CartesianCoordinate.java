@@ -1,5 +1,7 @@
 package org.wahlzeit.model;
 
+import static org.wahlzeit.utils.CustomAssert.assertIsValidDouble;
+
 public class CartesianCoordinate extends AbstractCoordinate {
 
     private double x;
@@ -25,9 +27,9 @@ public class CartesianCoordinate extends AbstractCoordinate {
      */
     public CartesianCoordinate(double x, double y, double z) {
 
-        assertXIsValid(x);
-        assertYIsValid(y);
-        assertZIsValid(z);
+        assertIsValidDouble(x, "x");
+        assertIsValidDouble(y, "y");
+        assertIsValidDouble(z, "z");
 
         this.x = x;
         this.y = y;
@@ -49,7 +51,7 @@ public class CartesianCoordinate extends AbstractCoordinate {
      * @param x
      */
     public void setX(double x) {
-        assertXIsValid(x);
+        assertIsValidDouble(x, "x");
         this.x = x;
         assertClassInvariants();
     }
@@ -67,7 +69,7 @@ public class CartesianCoordinate extends AbstractCoordinate {
      * @param y
      */
     public void setY(double y) {
-        assertYIsValid(y);
+        assertIsValidDouble(y, "y");
         this.y = y;
         assertClassInvariants();
     }
@@ -85,7 +87,7 @@ public class CartesianCoordinate extends AbstractCoordinate {
      * @param z
      */
     public void setZ(double z) {
-        assertZIsValid(z);
+        assertIsValidDouble(z, "z");
         this.z = z;
         assertClassInvariants();
     }
@@ -99,43 +101,14 @@ public class CartesianCoordinate extends AbstractCoordinate {
         return this;
     }
 
-    /**
-     * @methodtype assert
-     * @param x
-     */
-    private void assertXIsValid(double x) {
-        if(Double.isNaN(x)) {
-            throw new IllegalArgumentException("X is not a number!");
-        }
-    }
-
-    /**
-     * @methodtype assert
-     * @param y
-     */
-    private void assertYIsValid(double y) {
-        if(Double.isNaN(y)) {
-            throw new IllegalArgumentException("Y is not a number!");
-        }
-    }
-
-    /**
-     * @methodtype assert
-     * @param z
-     */
-    private void assertZIsValid(double z) {
-        if(Double.isNaN(z)) {
-            throw new IllegalArgumentException("Z is not a number!");
-        }
-    }
 
     /**
      * @methodtype assert
      */
     @Override
     protected void assertClassInvariants() {
-        assertXIsValid(this.x);
-        assertYIsValid(this.y);
-        assertZIsValid(this.z);
+        assertIsValidDouble(this.x, "x");
+        assertIsValidDouble(this.y, "y");
+        assertIsValidDouble(this.z, "z");
     }
 }

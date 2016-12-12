@@ -3,6 +3,8 @@ package org.wahlzeit.model;
 
 import com.googlecode.objectify.annotation.Subclass;
 
+import static org.wahlzeit.utils.CustomAssert.assertNotNull;
+
 @Subclass
 public class CarPhoto extends Photo {
 
@@ -38,6 +40,8 @@ public class CarPhoto extends Photo {
      */
     public CarPhoto(PhotoId id, CarManufacturer manufacturer, CarClassification classification, String modelName, int productionYear, int numDoors, int numSeats, int engineHP) {
         super(id);
+        assertHasMinimumParameters(manufacturer, modelName);
+
         this.manufacturer = manufacturer;
         this.classification = classification;
         this.modelName = modelName;
@@ -53,6 +57,7 @@ public class CarPhoto extends Photo {
      * @param manufacturer
      */
     public void setManufacturer(CarManufacturer manufacturer) {
+        assertNotNull(manufacturer);
         this.manufacturer = manufacturer;
     }
 
@@ -89,6 +94,7 @@ public class CarPhoto extends Photo {
      * @param modelName
      */
     public void setModelName(String modelName) {
+        assertNotNull(modelName);
         this.modelName = modelName;
     }
 
@@ -165,5 +171,10 @@ public class CarPhoto extends Photo {
      */
     public int getEngineHP() {
         return this.engineHP;
+    }
+
+    protected void assertHasMinimumParameters(CarManufacturer manufactuerer, String modelName) {
+        assertNotNull(manufactuerer);
+        assertNotNull(modelName);
     }
 }

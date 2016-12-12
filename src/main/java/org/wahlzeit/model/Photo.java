@@ -34,6 +34,8 @@ import org.wahlzeit.services.ObjectManager;
 
 import java.util.Map;
 
+import static org.wahlzeit.utils.CustomAssert.assertNotNull;
+
 /**
  * A photo represents a user-provided (uploaded) photo.
  */
@@ -145,6 +147,7 @@ public class Photo extends DataObject {
 	 * @methodtype constructor
 	 */
 	public Photo(PhotoId myId) {
+		assertNotNull(myId);
 		id = myId;
 
 		incWriteCount();

@@ -4,6 +4,8 @@ import org.wahlzeit.services.LogBuilder;
 
 import java.util.logging.Logger;
 
+import static org.wahlzeit.utils.CustomAssert.assertNotNull;
+
 
 public class CarPhotoFactory extends PhotoFactory {
 
@@ -62,6 +64,7 @@ public class CarPhotoFactory extends PhotoFactory {
      * Creates a new photo with the specified id
      */
     public CarPhoto createPhoto(PhotoId id) {
+        assertNotNull(id);
         return new CarPhoto(id);
     }
 
@@ -70,6 +73,9 @@ public class CarPhotoFactory extends PhotoFactory {
      * Creates a new photo with the specified id and additional fields
      */
     public CarPhoto createPhoto(PhotoId id, CarManufacturer manufacturer, CarClassification classification, String modelName, int productionYear, int numDoors, int numSeats, int engineHP) {
+        assertNotNull(id);
+        assertNotNull(manufacturer);
+        assertNotNull(modelName);
         return new CarPhoto(id, manufacturer, classification, modelName, productionYear, numDoors, numSeats, engineHP);
     }
 }

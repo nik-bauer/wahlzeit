@@ -1,5 +1,7 @@
 package org.wahlzeit.model;
 
+import org.wahlzeit.utils.CustomExceptions.CoordinateParameterException;
+
 import static java.lang.Math.*;
 
 public class SphericCoordinate extends AbstractCoordinate {
@@ -24,7 +26,7 @@ public class SphericCoordinate extends AbstractCoordinate {
      * @param latitude
      * @param longitude
      */
-    public SphericCoordinate(double latitude, double longitude) {
+    public SphericCoordinate(double latitude, double longitude) throws CoordinateParameterException {
         this(latitude, longitude, EARTH_RADIUS_KM);
     }
 
@@ -34,7 +36,7 @@ public class SphericCoordinate extends AbstractCoordinate {
      * @param longitude
      * @throws IllegalArgumentException
      */
-    public SphericCoordinate(double latitude, double longitude, double radius) throws IllegalArgumentException {
+    public SphericCoordinate(double latitude, double longitude, double radius) throws IllegalArgumentException, CoordinateParameterException {
 
         assertLatitudeIsValid(latitude);
         assertLongitudeIsValid(longitude);
@@ -59,7 +61,7 @@ public class SphericCoordinate extends AbstractCoordinate {
      * @methodtype set
      * @param latitude
      */
-    public void setLatitude(double latitude) {
+    public void setLatitude(double latitude) throws CoordinateParameterException {
         assertLatitudeIsValid(latitude);
 
         this.latitude = latitude;
@@ -79,7 +81,7 @@ public class SphericCoordinate extends AbstractCoordinate {
      * @methodtype set
      * @param longitude
      */
-    public void setLongitude(double longitude) {
+    public void setLongitude(double longitude) throws CoordinateParameterException {
         assertLongitudeIsValid(longitude);
 
         this.longitude = longitude;
@@ -99,7 +101,7 @@ public class SphericCoordinate extends AbstractCoordinate {
      * @methodtype set
      * @param radius
      */
-    public void setRadius(double radius) {
+    public void setRadius(double radius) throws CoordinateParameterException {
         assertRadiusIsValid(radius);
 
         this.radius = radius;
@@ -112,7 +114,7 @@ public class SphericCoordinate extends AbstractCoordinate {
 	 * @return cartesian representation
 	 */
 	@Override
-	public CartesianCoordinate asCartesian() {
+	public CartesianCoordinate asCartesian() throws CoordinateParameterException {
         assertLatitudeIsValid(latitude);
         assertLongitudeIsValid(longitude);
         assertRadiusIsValid(radius);
@@ -130,9 +132,9 @@ public class SphericCoordinate extends AbstractCoordinate {
      * @methodtype assert
      * @param latitude
      */
-    private void assertLatitudeIsValid(double latitude) {
+    private void assertLatitudeIsValid(double latitude) throws CoordinateParameterException {
         if(latitude < -90.0 || latitude > 90.0 || Double.isNaN(latitude)) {
-            throw new IllegalArgumentException("Latitude of " + latitude + " exceeds valid boundaries: [-90.0, 90.0]");
+            throw new CoordinateParameterException("Latitude of " + latitude + " exceeds valid boundaries: [-90.0, 90.0]");
         }
     }
 
@@ -140,9 +142,9 @@ public class SphericCoordinate extends AbstractCoordinate {
      * @methodtype assert
      * @param longitude
      */
-    private void assertLongitudeIsValid(double longitude) {
+    private void assertLongitudeIsValid(double longitude) throws CoordinateParameterException {
         if(longitude < -180.0 || longitude > 180.0 || Double.isNaN(longitude)) {
-            throw new IllegalArgumentException("Longitude of " + longitude + " exceeds valid boundaries: [-180.0, 180.0]");
+            throw new CoordinateParameterException("Longitude of " + longitude + " exceeds valid boundaries: [-180.0, 180.0]");
         }
     }
 
@@ -150,9 +152,9 @@ public class SphericCoordinate extends AbstractCoordinate {
      * @methodtype assert
      * @param radius
      */
-    private void assertRadiusIsValid(double radius) {
-        if(radius < 0.0 || Double.isNaN(radius)) {
-            throw new IllegalArgumentException("Radius of " + radius + " exceeds valid boundaries: [0.0, " + Double.MAX_VALUE + "[");
+    private void assertRadiusIsValid(double radius) throws CoordinateParameterException {
+        if(radius < 0.0 || Double.isNaN(radius) || Double.isInfinite(radius)) {
+            throw new CoordinateParameterException("Radius of " + radius + " exceeds valid boundaries: [0.0, " + Double.MAX_VALUE + "[");
         }
     }
 
@@ -160,7 +162,7 @@ public class SphericCoordinate extends AbstractCoordinate {
      * @methodtype assert
      */
     @Override
-    protected void assertClassInvariants() {
+    protected void assertClassInvariants() throws CoordinateParameterException {
         assertLatitudeIsValid(this.latitude);
         assertLongitudeIsValid(this.longitude);
         assertRadiusIsValid(this.radius);
