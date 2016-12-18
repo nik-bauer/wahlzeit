@@ -9,7 +9,7 @@ public abstract class AbstractCoordinate implements Coordinate {
 
 	public double EQUALS_DELTA = 0.01;
 
-	public double getDistance(Coordinate coordinate) throws CoordinateParameterException {
+	public double getDistance(Coordinate coordinate) {
 
 		assertNotNull(coordinate);
 
@@ -24,12 +24,11 @@ public abstract class AbstractCoordinate implements Coordinate {
 		double distance = sqrt(deltaX + deltaY + deltaZ);
 
 		assertDistanceIsValid(distance);
-		assertClassInvariants();
 
 		return distance;
 	}
 
-	public boolean isEqual(Coordinate coordinate) throws CoordinateParameterException {
+	public boolean isEqual(Coordinate coordinate) {
 
 		assertNotNull(coordinate);
 
@@ -39,7 +38,7 @@ public abstract class AbstractCoordinate implements Coordinate {
 		return false;
 	}
 
-	public abstract CartesianCoordinate asCartesian() throws CoordinateParameterException;
+	public abstract CartesianCoordinate asCartesian();
 
 	/**
 	 * @metodtype assert
@@ -50,9 +49,4 @@ public abstract class AbstractCoordinate implements Coordinate {
 			throw new IllegalArgumentException("Distance must not be negative!");
 		}
 	}
-
-	/**
-	 * @methodtype assert
-	 */
-	protected abstract void assertClassInvariants() throws CoordinateParameterException;
 }
