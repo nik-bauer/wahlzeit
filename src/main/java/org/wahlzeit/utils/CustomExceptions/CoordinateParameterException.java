@@ -1,7 +1,7 @@
 package org.wahlzeit.utils.CustomExceptions;
 
 
-public class CoordinateParameterException extends Exception {
+public class CoordinateParameterException extends RuntimeException {
 
     public CoordinateParameterException() {
         super();

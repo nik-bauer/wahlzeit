@@ -26,26 +26,20 @@ public class CartesianCoordinateTest {
     }
 
     @Test
-    public void getterSetterTest() {
-        CartesianCoordinate coord = new CartesianCoordinate();
-		coord.setX(1);
-        assertEquals(1, coord.getX(), 0);
+    public void getterTest() {
+		assertEquals(0.0, coordOrigin.getX(), 0);
+		assertEquals(0.0, coordOrigin.getY(), 0);
+		assertEquals(0.0, coordOrigin.getZ(), 0);
 
-        coord.setY(2);
-        assertEquals(2, coord.getY(), 0);
-
-        coord.setZ(3);
-        assertEquals(3, coord.getZ(), 0);
-    }
+		assertEquals(1.0, coordOrigin.getX(), 0);
+		assertEquals(1.0, coordOrigin.getY(), 0);
+		assertEquals(1.0, coordOrigin.getZ(), 0);
+	}
 
 	@Test
 	public void getDistanceTest() {
-        try {
-            assertEquals(1.73, coordOrigin.getDistance(coord_1_1_1), 0.1);
-            assertEquals(1.73, coord_1_1_1.getDistance(coordOrigin), 0.1);
-        } catch (CoordinateParameterException e) {
-            e.printStackTrace();
-        }
+		assertEquals(1.73, coordOrigin.getDistance(coord_1_1_1), 0.1);
+		assertEquals(1.73, coord_1_1_1.getDistance(coordOrigin), 0.1);
 	}
 
 	@Test
@@ -55,11 +49,7 @@ public class CartesianCoordinateTest {
 
 	@Test
 	public void isEqualTest() {
-        try {
-            assertTrue(coord_1_1_1.isEqual(coord_1_1_1));
-            assertFalse(coord_1_1_1.isEqual(coordOrigin));
-        } catch (CoordinateParameterException e) {
-            e.printStackTrace();
-        }
+		assertTrue(coord_1_1_1.isEqual(coord_1_1_1));
+		assertFalse(coord_1_1_1.isEqual(coordOrigin));
 	}
 }
