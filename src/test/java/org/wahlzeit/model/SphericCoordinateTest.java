@@ -1,9 +1,7 @@
 package org.wahlzeit.model;
 
 import org.junit.Before;
-import org.junit.Ignore;
 import org.junit.Test;
-import org.wahlzeit.utils.CustomExceptions.CoordinateParameterException;
 
 import static org.junit.Assert.*;
 
@@ -66,12 +64,8 @@ public class SphericCoordinateTest {
 	public void asCartesianTest() {
 		SphericCoordinate sphCoord = null;
 		CartesianCoordinate convCoord = null;
-		try {
-			sphCoord = new SphericCoordinate(1, 2, 3);
-			convCoord = sphCoord.asCartesian();
-		} catch (CoordinateParameterException e) {
-			e.printStackTrace();
-		}
+		sphCoord = new SphericCoordinate(1, 2, 3);
+		convCoord = sphCoord.asCartesian();
 
 		assertEquals(0.10, convCoord.getX(), 0.1);
 		assertEquals(0.00, convCoord.getY(), 0.1);
@@ -80,11 +74,7 @@ public class SphericCoordinateTest {
 
 	@Test
 	public void isEqualTest() {
-		try {
-			assertTrue(coordHamburg.isEqual(coordHamburg));
-			assertFalse(coordHamburg.isEqual(coordErlangen));
-		} catch (CoordinateParameterException e) {
-			e.printStackTrace();
-		}
+		assertTrue(coordHamburg.isEqual(coordHamburg));
+		assertFalse(coordHamburg.isEqual(coordErlangen));
 	}
 }

@@ -52,7 +52,7 @@ public class SphericCoordinate extends AbstractCoordinate {
      * @return latitude
      */
     public double getLatitude() {
-        return latitude;
+        return this.latitude;
     }
 
     /**
@@ -60,7 +60,7 @@ public class SphericCoordinate extends AbstractCoordinate {
      * @return longitude
      */
     public double getLongitude() {
-        return longitude;
+        return this.longitude;
     }
 
     /**
@@ -68,7 +68,7 @@ public class SphericCoordinate extends AbstractCoordinate {
      * @return earth radius in km
      */
     public double getRadius() {
-        return radius;
+        return this.radius;
     }
 
 	/**

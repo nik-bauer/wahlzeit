@@ -1,7 +1,5 @@
 package org.wahlzeit.model;
 
-import org.wahlzeit.utils.CustomExceptions.CoordinateParameterException;
-
 import static java.lang.Math.*;
 import static org.wahlzeit.utils.CustomAssert.assertNotNull;
 

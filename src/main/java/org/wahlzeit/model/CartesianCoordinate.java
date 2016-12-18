@@ -39,7 +39,7 @@ public class CartesianCoordinate extends AbstractCoordinate {
      * @return x
      */
     public double getX() {
-        return x;
+        return this.x;
     }
 
     /**
@@ -47,7 +47,7 @@ public class CartesianCoordinate extends AbstractCoordinate {
      * @return y
      */
     public double getY() {
-        return y;
+        return this.y;
     }
 
     /**
@@ -55,7 +55,7 @@ public class CartesianCoordinate extends AbstractCoordinate {
      * @return z
      */
     public double getZ() {
-        return z;
+        return this.z;
     }
 
     /**

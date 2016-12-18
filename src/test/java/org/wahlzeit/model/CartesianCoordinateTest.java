@@ -2,7 +2,6 @@ package org.wahlzeit.model;
 
 import org.junit.Before;
 import org.junit.Test;
-import org.wahlzeit.utils.CustomExceptions.CoordinateParameterException;
 
 import static org.junit.Assert.*;
 
