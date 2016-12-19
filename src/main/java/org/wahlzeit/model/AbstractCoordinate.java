@@ -1,11 +1,15 @@
 package org.wahlzeit.model;
 
+import java.util.concurrent.ConcurrentHashMap;
+
 import static java.lang.Math.*;
 import static org.wahlzeit.utils.CustomAssert.assertNotNull;
 
 public abstract class AbstractCoordinate implements Coordinate {
 
 	public double EQUALS_DELTA = 0.01;
+
+	protected static ConcurrentHashMap<Integer, Coordinate> allInstances = new ConcurrentHashMap<>();
 
 	public double getDistance(Coordinate coordinate) {
 

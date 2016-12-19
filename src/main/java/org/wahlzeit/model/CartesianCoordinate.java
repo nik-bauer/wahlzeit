@@ -8,13 +8,16 @@ public class CartesianCoordinate extends AbstractCoordinate {
     private final double y;
     private final double z;
 
-    /**
-     * @methodtype constructor
-     */
-    public CartesianCoordinate() {
-        this.x = 0.0;
-        this.y = 0.0;
-        this.z = 0.0;
+	public static CartesianCoordinate getInstance(final double x, final double y, final double z) {
+		CartesianCoordinate cartesianCoord = new CartesianCoordinate(x, y, z);
+		Coordinate coord = allInstances.get(cartesianCoord.hashCode());
+
+		if(coord == null) {
+			allInstances.put(cartesianCoord.hashCode(), cartesianCoord);
+			coord = cartesianCoord;
+		}
+
+		return (CartesianCoordinate) coord;
 	}
 
     /**
@@ -23,7 +26,7 @@ public class CartesianCoordinate extends AbstractCoordinate {
      * @param y
      * @param z
      */
-    public CartesianCoordinate(double x, double y, double z) {
+    private CartesianCoordinate(double x, double y, double z) {
 
         assertIsValidDouble(x, "x");
         assertIsValidDouble(y, "y");
@@ -66,4 +69,40 @@ public class CartesianCoordinate extends AbstractCoordinate {
     public CartesianCoordinate asCartesian() {
         return this;
     }
+
+	/**
+	 * @methodtype compare
+	 * @param o
+	 * @return
+	 * (auto_generated)
+	 */
+	@Override
+	public boolean equals(Object o) {
+		if (this == o) return true;
+		if (o == null || getClass() != o.getClass()) return false;
+
+		CartesianCoordinate that = (CartesianCoordinate) o;
+
+		if (Double.compare(that.getX(), getX()) != 0) return false;
+		if (Double.compare(that.getY(), getY()) != 0) return false;
+		return Double.compare(that.getZ(), getZ()) == 0;
+	}
+
+	/**
+	 * @methodtype compare
+	 * @return
+	 * (auto_generated)
+	 */
+	@Override
+	public int hashCode() {
+		int result;
+		long temp;
+		temp = Double.doubleToLongBits(getX());
+		result = (int) (temp ^ (temp >>> 32));
+		temp = Double.doubleToLongBits(getY());
+		result = 31 * result + (int) (temp ^ (temp >>> 32));
+		temp = Double.doubleToLongBits(getZ());
+		result = 31 * result + (int) (temp ^ (temp >>> 32));
+		return result;
+	}
 }
