@@ -14,8 +14,8 @@ public class CartesianCoordinateTest {
 
     @Before
     public void setUp() {
-        coordOrigin = new CartesianCoordinate(0.0, 0.0, 0.0);
-        coord_1_1_1 = new CartesianCoordinate(1.0, 1.0, 1.0);
+        coordOrigin = CartesianCoordinate.getInstance(0.0, 0.0, 0.0);
+        coord_1_1_1 = CartesianCoordinate.getInstance(1.0, 1.0, 1.0);
     }
 
     @Test

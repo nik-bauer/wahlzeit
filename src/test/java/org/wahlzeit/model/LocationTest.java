@@ -15,7 +15,7 @@ public class LocationTest {
 	@Before
 	public void initLocation() {
 		try {
-			c = new SphericCoordinate(12.34, 56.78);
+			c = SphericCoordinate.getInstance(12.34, 56.78);
 			l = new Location((SphericCoordinate)c);
 		} catch (CoordinateParameterException e) {
 			e.printStackTrace();
@@ -34,7 +34,7 @@ public class LocationTest {
 	public void testGetterSetter() {
 		Coordinate coord = null;
 		try {
-			coord = new SphericCoordinate(1.0, 1.0);
+			coord = SphericCoordinate.getInstance(1.0, 1.0);
 			l.setCoordinate((SphericCoordinate) coord);
 		} catch (CoordinateParameterException e) {
 			e.printStackTrace();

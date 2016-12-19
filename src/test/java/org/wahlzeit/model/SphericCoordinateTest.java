@@ -14,33 +14,33 @@ public class SphericCoordinateTest {
 
     @Before
     public void setUp() {
-        coordHamburg = new SphericCoordinate(53.56, 10.00); // 657.128257, 890.005556, 6274.210194
-        coordErlangen = new SphericCoordinate(49.58, 11.01); // 788.9139567, 926.3154512, 6253.734521
+        coordHamburg = SphericCoordinate.getInstance(53.56, 10.00); // 657.128257, 890.005556, 6274.210194
+        coordErlangen = SphericCoordinate.getInstance(49.58, 11.01); // 788.9139567, 926.3154512, 6253.734521
     }
 
 	@Test (expected = IllegalArgumentException.class)
 	public void constructorValidationTest1() {
-		SphericCoordinate coord = new SphericCoordinate(-91.0, 0.0);
+		SphericCoordinate coord = SphericCoordinate.getInstance(-91.0, 0.0);
 	}
 
 	@Test (expected = IllegalArgumentException.class)
 	public void constructorValidationTest2() {
-		SphericCoordinate coord = new SphericCoordinate(91.0, 0.0);
+		SphericCoordinate coord = SphericCoordinate.getInstance(91.0, 0.0);
 	}
 
 	@Test (expected = IllegalArgumentException.class)
 	public void constructorValidationTest3() {
-		SphericCoordinate coord = new SphericCoordinate(0.0, -181.0);
+		SphericCoordinate coord = SphericCoordinate.getInstance(0.0, -181.0);
 	}
 
 	@Test (expected = IllegalArgumentException.class)
 	public void constructorValidationTest4() {
-		SphericCoordinate coord = new SphericCoordinate(0.0, 181.0);
+		SphericCoordinate coord = SphericCoordinate.getInstance(0.0, 181.0);
 	}
 
 	@Test (expected = IllegalArgumentException.class)
 	public void constructorValidationTest5() {
-		SphericCoordinate coord = new SphericCoordinate(0.0, 0.0, -1.0);
+		SphericCoordinate coord = SphericCoordinate.getInstance(0.0, 0.0, -1.0);
 	}
 
 	@Test
@@ -64,7 +64,7 @@ public class SphericCoordinateTest {
 	public void asCartesianTest() {
 		SphericCoordinate sphCoord = null;
 		CartesianCoordinate convCoord = null;
-		sphCoord = new SphericCoordinate(1, 2, 3);
+		sphCoord = SphericCoordinate.getInstance(1, 2, 3);
 		convCoord = sphCoord.asCartesian();
 
 		assertEquals(0.10, convCoord.getX(), 0.1);
