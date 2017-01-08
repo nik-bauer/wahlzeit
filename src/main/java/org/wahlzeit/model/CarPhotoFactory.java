@@ -1,12 +1,16 @@
 package org.wahlzeit.model;
 
 import org.wahlzeit.services.LogBuilder;
+import org.wahlzeit.utils.DesignPattern;
 
 import java.util.logging.Logger;
 
 import static org.wahlzeit.utils.CustomAssert.assertNotNull;
 
-
+@DesignPattern(
+        name = "AbstractFactory",
+        participants = {"AbstractFactory", "ConcreteFactory"}
+)
 public class CarPhotoFactory extends PhotoFactory {
 
     private static final Logger log = Logger.getLogger(CarPhotoFactory.class.getName());
