@@ -1,10 +1,16 @@
 package org.wahlzeit.model;
 
 
+import org.wahlzeit.utils.DesignPattern;
+
 import java.util.HashSet;
 import java.util.Set;
 import java.util.logging.Logger;
 
+@DesignPattern(
+        name = "Singleton",
+        participants = {"Singleton"}
+)
 public class CarPhotoManager extends PhotoManager {
 
     static {
