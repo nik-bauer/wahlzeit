@@ -2,6 +2,8 @@ package org.wahlzeit.model;
 
 import org.wahlzeit.utils.CustomExceptions.CoordinateParameterException;
 
+import java.util.concurrent.ConcurrentHashMap;
+
 import static java.lang.Math.*;
 
 public class SphericCoordinate extends AbstractCoordinate {
@@ -12,28 +14,30 @@ public class SphericCoordinate extends AbstractCoordinate {
     private final double longitude;
     private final double radius;
 
+	private static ConcurrentHashMap<SphericCoordinate, SphericCoordinate> allInstances = new ConcurrentHashMap<>();
+
 	public static SphericCoordinate getInstance(final double latitude, final double longitude) {
 		SphericCoordinate sphericCoord = new SphericCoordinate(latitude, longitude);
-		Coordinate coord = allInstances.get(sphericCoord.hashCode());
+		SphericCoordinate coord = allInstances.get(sphericCoord);
 
 		if(coord == null) {
-			allInstances.put(sphericCoord.hashCode(), sphericCoord);
+			allInstances.put(sphericCoord, sphericCoord);
 			coord = sphericCoord;
 		}
 
-		return (SphericCoordinate) coord;
+		return coord;
 	}
 
 	public static SphericCoordinate getInstance(final double latitude, final double longitude, final double radius) {
 		SphericCoordinate sphericCoord = new SphericCoordinate(latitude, longitude, radius);
-		Coordinate coord = allInstances.get(sphericCoord.hashCode());
+		SphericCoordinate coord = allInstances.get(sphericCoord);
 
 		if(coord == null) {
-			allInstances.put(sphericCoord.hashCode(), sphericCoord);
+			allInstances.put(sphericCoord, sphericCoord);
 			coord = sphericCoord;
 		}
 
-		return (SphericCoordinate) coord;
+		return coord;
 	}
 
     /**

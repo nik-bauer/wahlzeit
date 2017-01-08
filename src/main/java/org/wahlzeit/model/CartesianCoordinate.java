@@ -1,5 +1,7 @@
 package org.wahlzeit.model;
 
+import java.util.concurrent.ConcurrentHashMap;
+
 import static org.wahlzeit.utils.CustomAssert.assertIsValidDouble;
 
 public class CartesianCoordinate extends AbstractCoordinate {
@@ -8,16 +10,19 @@ public class CartesianCoordinate extends AbstractCoordinate {
     private final double y;
     private final double z;
 
+	private static ConcurrentHashMap<CartesianCoordinate, CartesianCoordinate> allInstances = new ConcurrentHashMap<>();
+
+
 	public static CartesianCoordinate getInstance(final double x, final double y, final double z) {
 		CartesianCoordinate cartesianCoord = new CartesianCoordinate(x, y, z);
-		Coordinate coord = allInstances.get(cartesianCoord.hashCode());
+		CartesianCoordinate coord = allInstances.get(cartesianCoord);
 
 		if(coord == null) {
-			allInstances.put(cartesianCoord.hashCode(), cartesianCoord);
+			allInstances.put(cartesianCoord, cartesianCoord);
 			coord = cartesianCoord;
 		}
 
-		return (CartesianCoordinate) coord;
+		return coord;
 	}
 
     /**
