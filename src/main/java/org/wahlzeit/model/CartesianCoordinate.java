@@ -1,9 +1,15 @@
 package org.wahlzeit.model;
 
+import org.wahlzeit.utils.DesignPattern;
+
 import java.util.concurrent.ConcurrentHashMap;
 
 import static org.wahlzeit.utils.CustomAssert.assertIsValidDouble;
 
+@DesignPattern(
+		name = "Template",
+		participants = {"AbstractClass", "ConcreteClass"}
+)
 public class CartesianCoordinate extends AbstractCoordinate {
 
     private final double x;

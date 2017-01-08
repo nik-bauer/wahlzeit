@@ -1,11 +1,16 @@
 package org.wahlzeit.model;
 
 import org.wahlzeit.utils.CustomExceptions.CoordinateParameterException;
+import org.wahlzeit.utils.DesignPattern;
 
 import java.util.concurrent.ConcurrentHashMap;
 
 import static java.lang.Math.*;
 
+@DesignPattern(
+		name = "Template",
+		participants = {"AbstractClass", "ConcreteClass"}
+)
 public class SphericCoordinate extends AbstractCoordinate {
 
     static final double EARTH_RADIUS_KM = 6371.0;

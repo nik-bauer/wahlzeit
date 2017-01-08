@@ -1,8 +1,13 @@
 package org.wahlzeit.model;
 
+import org.wahlzeit.utils.DesignPattern;
+
 import static java.lang.Math.*;
 import static org.wahlzeit.utils.CustomAssert.assertNotNull;
-
+@DesignPattern(
+		name = "Template",
+		participants = {"AbstractClass", "ConcreteClass"}
+)
 public abstract class AbstractCoordinate implements Coordinate {
 
 	public double EQUALS_DELTA = 0.01;
