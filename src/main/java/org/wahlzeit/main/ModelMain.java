@@ -21,6 +21,8 @@
 package org.wahlzeit.main;
 
 import org.wahlzeit.model.*;
+import org.wahlzeit.model.car.CarManager;
+import org.wahlzeit.model.car.CarPhotoFactory;
 import org.wahlzeit.model.persistence.DatastoreAdapter;
 import org.wahlzeit.model.persistence.ImageStorage;
 import org.wahlzeit.services.LogBuilder;
@@ -58,7 +60,7 @@ public abstract class ModelMain extends AbstractMain {
 		CarPhotoFactory.initialize();
 
 		log.config(LogBuilder.createSystemMessage().addAction("load Photos").toString());
-		CarPhotoManager.getInstance().init();
+		CarManager.getInstance();
 	}
 
 
@@ -76,7 +78,7 @@ public abstract class ModelMain extends AbstractMain {
 	 */
 	public void saveAll() throws IOException{
 		PhotoCaseManager.getInstance().savePhotoCases();
-		CarPhotoManager.getInstance().savePhotos();
+		CarManager.getInstance().savePhotos();
 		UserManager.getInstance().saveClients();
 		GlobalsManager.getInstance().saveGlobals();
 	}

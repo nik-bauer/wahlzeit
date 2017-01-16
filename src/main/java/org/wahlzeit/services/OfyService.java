@@ -4,6 +4,9 @@ import com.googlecode.objectify.Objectify;
 import com.googlecode.objectify.ObjectifyFactory;
 import com.googlecode.objectify.ObjectifyService;
 import org.wahlzeit.model.*;
+import org.wahlzeit.model.car.Car;
+import org.wahlzeit.model.car.CarPhoto;
+import org.wahlzeit.model.car.CarType;
 import org.wahlzeit.model.persistence.DatastoreAdapter.ImageWrapper;
 
 /**
@@ -17,6 +20,8 @@ public class OfyService {
 	 * Register all entities at startup
 	 */
 	static {
+		factory().register(CarType.class);
+		factory().register(Car.class);
 		factory().register(Photo.class);
 		factory().register(CarPhoto.class);
 		factory().register(Globals.class);
