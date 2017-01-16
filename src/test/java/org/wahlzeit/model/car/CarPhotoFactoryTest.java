@@ -1,4 +1,4 @@
-package org.wahlzeit.model;
+package org.wahlzeit.model.car;
 
 
 import org.junit.Assert;
@@ -7,6 +7,11 @@ import org.junit.ClassRule;
 import org.junit.Test;
 import org.junit.rules.RuleChain;
 import org.junit.rules.TestRule;
+import org.wahlzeit.model.CarManufacturer;
+import org.wahlzeit.model.PhotoId;
+import org.wahlzeit.model.car.CarPhoto;
+import org.wahlzeit.model.car.CarPhotoFactory;
+import org.wahlzeit.model.car.CarType;
 import org.wahlzeit.testEnvironmentProvider.LocalDatastoreServiceTestConfigProvider;
 
 public class CarPhotoFactoryTest {
@@ -20,7 +25,7 @@ public class CarPhotoFactoryTest {
     @Before
     public void setUp() {
         carPhotoFactory = CarPhotoFactory.getInstance();
-        quattroporte = carPhotoFactory.createPhoto(new PhotoId(1), CarManufacturer.MASERATI, CarClassification.GRAND_TOURER, "Quattroporte", 2013, 5, 5, 530);
+        quattroporte = carPhotoFactory.createPhoto(new PhotoId(1), CarManufacturer.MASERATI, CarType.GRAND_TOURER, "Quattroporte", 2013, 5, 5, 530);
     }
 
     @Test
@@ -38,7 +43,7 @@ public class CarPhotoFactoryTest {
     @Test
     public void fieldsTest() {
         Assert.assertEquals(quattroporte.getManufacturer(), CarManufacturer.MASERATI);
-        Assert.assertEquals(quattroporte.getClassification(), CarClassification.GRAND_TOURER);
+        Assert.assertEquals(quattroporte.getClassification(), CarType.GRAND_TOURER);
         Assert.assertEquals(quattroporte.getModelName(), "Quattroporte");
         Assert.assertEquals(quattroporte.getProductionYear(), 2013);
         Assert.assertEquals(quattroporte.getNumDoors(), 5);
