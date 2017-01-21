@@ -79,10 +79,9 @@ public class CarPhotoFactory extends PhotoFactory {
      * @methodtype factory
      * Creates a new photo with the specified id and additional fields
      */
-    public CarPhoto createPhoto(PhotoId id, CarManufacturer manufacturer, CarType classification, String modelName, int productionYear, int numDoors, int numSeats, int engineHP) {
+    public CarPhoto createPhoto(PhotoId id, Car car) {
         assertNotNull(id);
-        assertNotNull(manufacturer);
-        assertNotNull(modelName);
-        return new CarPhoto(id, manufacturer, classification, modelName, productionYear, numDoors, numSeats, engineHP);
+        assertNotNull(car);
+        return new CarPhoto(id, car);
     }
 }

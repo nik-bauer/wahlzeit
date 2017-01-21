@@ -1,6 +1,7 @@
 package org.wahlzeit.model.car;
 
 import com.googlecode.objectify.annotation.Entity;
+import com.googlecode.objectify.annotation.Serialize;
 import org.wahlzeit.model.CarManufacturer;
 import org.wahlzeit.services.DataObject;
 
@@ -11,8 +12,11 @@ import java.util.Set;
 public class CarType extends DataObject {
 
     protected CarType parentType = null;
+    @Serialize
     protected Set<CarType> subTypes = new HashSet<>();
     private final String name;
+    private String classification;
+    private CarManufacturer manufacturer;
 
 
     public CarType(String name) {
@@ -47,6 +51,14 @@ public class CarType extends DataObject {
         return name;
     }
 
+    public String getClassification() {
+        return classification;
+    }
+
+    public CarManufacturer getManufacturer() {
+        return manufacturer;
+    }
+
     protected void addSubType(CarType subType) {
         if(subType.getParentType() != null) {
             throw new IllegalStateException(subType.name + "cannot have more than one parent type!");
@@ -56,17 +68,16 @@ public class CarType extends DataObject {
     }
 
     public boolean isSubTypeOf(CarType other) {
-        if(other == null) {
-            return false;
-        }
+        CarType parent = this.parentType;
 
-        for (CarType carType : other.getSubTypes()) {
-            if(carType.equals(this)) {
+        while (parent != null) {
+            if(parent.equals(other)) {
                 return true;
             }
+
+            parent = parent.parentType;
         }
         return false;
-
     }
     /**
      * @methodtype setter
@@ -84,4 +95,11 @@ public class CarType extends DataObject {
         return this.parentType;
     }
 
+    public void setClassification(String classification) {
+        this.classification = classification;
+    }
+
+    public void setManufacturer(CarManufacturer manufacturer) {
+        this.manufacturer = manufacturer;
+    }
 }

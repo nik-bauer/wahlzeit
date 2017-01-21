@@ -17,7 +17,8 @@ import org.wahlzeit.testEnvironmentProvider.LocalDatastoreServiceTestConfigProvi
 public class CarPhotoFactoryTest {
 
     private CarPhotoFactory carPhotoFactory;
-    private CarPhoto quattroporte;
+    private Car quattroporte;
+    private CarPhoto quattroportePhoto;
 
     @ClassRule
     public static TestRule chain = RuleChain.outerRule(new LocalDatastoreServiceTestConfigProvider());
@@ -25,7 +26,8 @@ public class CarPhotoFactoryTest {
     @Before
     public void setUp() {
         carPhotoFactory = CarPhotoFactory.getInstance();
-        quattroporte = carPhotoFactory.createPhoto(new PhotoId(1), CarManufacturer.MASERATI, CarType.GRAND_TOURER, "Quattroporte", 2013, 5, 5, 530);
+        quattroporte = new Car("Quattroporte", new CarType("GrandTourer"), CarManufacturer.MASERATI);
+        quattroportePhoto = carPhotoFactory.createPhoto(PhotoId.NULL_ID, quattroporte);
     }
 
     @Test
@@ -36,18 +38,13 @@ public class CarPhotoFactoryTest {
     @Test
     public void photoCreationTest() {
         Assert.assertEquals(CarPhoto.class, carPhotoFactory.createPhoto().getClass());
-        Assert.assertEquals(CarPhoto.class, carPhotoFactory.createPhoto(new PhotoId(1)).getClass());
-        Assert.assertEquals(CarPhoto.class, quattroporte.getClass());
+        Assert.assertEquals(CarPhoto.class, carPhotoFactory.createPhoto(PhotoId.NULL_ID).getClass());
+        Assert.assertEquals(Car.class, quattroporte.getClass());
     }
 
     @Test
     public void fieldsTest() {
-        Assert.assertEquals(quattroporte.getManufacturer(), CarManufacturer.MASERATI);
-        Assert.assertEquals(quattroporte.getClassification(), CarType.GRAND_TOURER);
-        Assert.assertEquals(quattroporte.getModelName(), "Quattroporte");
-        Assert.assertEquals(quattroporte.getProductionYear(), 2013);
-        Assert.assertEquals(quattroporte.getNumDoors(), 5);
-        Assert.assertEquals(quattroporte.getNumSeats(), 5);
-        Assert.assertEquals(quattroporte.getEngineHP(), 530);
+        Assert.assertEquals(quattroportePhoto.getId(), 0);
+        Assert.assertEquals(quattroportePhoto.getCar(), quattroporte);
     }
 }

@@ -11,8 +11,7 @@ import static org.wahlzeit.utils.CustomAssert.assertNotNull;
 @Subclass
 public class CarPhoto extends Photo {
 
-    public static final String CLASSIFICATION = "classification";
-    public static final String MANUFACTURER = "manufacturer";
+
 
     private Car car;
 
@@ -28,6 +27,14 @@ public class CarPhoto extends Photo {
      */
     public CarPhoto(PhotoId id) {
         super(id);
+    }
+
+    /**
+     * @methodtype constructor
+     */
+    public CarPhoto(PhotoId id, Car car) {
+        super(id);
+        this.car = car;
     }
 
     /**

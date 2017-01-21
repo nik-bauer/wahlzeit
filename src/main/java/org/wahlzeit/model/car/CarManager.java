@@ -63,4 +63,18 @@ public class CarManager extends ObjectManager {
             carTypes.put(carType.getName(), carType);
         }
     }
+
+    public void saveObjects() {
+        for (Car car : cars) {
+            super.writeObject(car);
+        }
+
+        for (CarType carType: carTypes.values()) {
+            super.writeObject(carType);
+        }
+    }
+
+    public void deleteObject(CarType carType) {
+        super.deleteObject(carType);
+    }
 }

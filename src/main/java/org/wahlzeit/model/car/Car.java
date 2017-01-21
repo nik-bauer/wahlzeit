@@ -11,7 +11,6 @@ import static org.wahlzeit.utils.CustomAssert.assertNotNull;
 public class Car extends DataObject {
 
     private CarType carType;
-    private CarManufacturer manufacturer;
     private String modelName;
     private int productionYear;
     private int numDoors;
@@ -23,22 +22,20 @@ public class Car extends DataObject {
      * @methodtype constructor
      */
     public Car(String modelName, CarType carType, CarManufacturer manufacturer) {
-        assertHasMinimumParameters(modelName, carType, manufacturer);
+        assertHasMinimumParameters(modelName, carType);
 
         this.modelName = modelName;
         this.carType = carType;
-        this.manufacturer = manufacturer;
     }
 
     /**
      * @methodtype constructor
      */
     public Car(String modelName, CarType carType, CarManufacturer manufacturer, int productionYear, int numDoors, int numSeats, int engineHP) {
-        assertHasMinimumParameters(modelName, carType, manufacturer);
+        assertHasMinimumParameters(modelName, carType);
 
         this.modelName = modelName;
         this.carType = carType;
-        this.manufacturer = manufacturer;
         this.productionYear = productionYear;
         this.numDoors = numDoors;
         this.numSeats = numSeats;
@@ -71,25 +68,6 @@ public class Car extends DataObject {
      */
     public CarType getCarType() {
         return this.carType;
-    }
-
-    /**
-     *
-     * @methodtype set
-     * @param manufacturer
-     */
-    public void setManufacturer(CarManufacturer manufacturer) {
-        assertNotNull(manufacturer);
-        this.manufacturer = manufacturer;
-    }
-
-    /**
-     *
-     * @methodtype get
-     * @return Manufacturer of the car.
-     */
-    public CarManufacturer getManufacturer() {
-        return this.manufacturer;
     }
 
     /**
@@ -158,9 +136,8 @@ public class Car extends DataObject {
         return this.engineHP;
     }
 
-    protected void assertHasMinimumParameters(String modelName, CarType carType, CarManufacturer manufacturer) {
+    protected void assertHasMinimumParameters(String modelName, CarType carType) {
         assertNotNull(modelName);
         assertNotNull(carType);
-        assertNotNull(manufacturer);
     }
 }
