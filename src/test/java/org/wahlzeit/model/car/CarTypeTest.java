@@ -3,11 +3,6 @@ package org.wahlzeit.model.car;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
-import org.w3c.dom.ranges.Range;
-import org.wahlzeit.model.CarManufacturer;
-import org.wahlzeit.model.car.CarType;
-
-import static org.junit.Assert.*;
 
 
 public class CarTypeTest {

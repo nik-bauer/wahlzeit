@@ -4,15 +4,7 @@ package org.wahlzeit.model.car;
 import org.junit.*;
 import org.junit.rules.RuleChain;
 import org.junit.rules.TestRule;
-import org.wahlzeit.model.CarManufacturer;
-import org.wahlzeit.model.car.Car;
-import org.wahlzeit.model.car.CarManager;
-import org.wahlzeit.model.car.CarPhoto;
-import org.wahlzeit.model.car.CarType;
 import org.wahlzeit.testEnvironmentProvider.LocalDatastoreServiceTestConfigProvider;
-
-import java.util.HashSet;
-import java.util.Set;
 
 public class CarManagerTest {
 

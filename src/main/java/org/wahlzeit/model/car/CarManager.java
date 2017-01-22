@@ -1,7 +1,6 @@
 package org.wahlzeit.model.car;
 
 
-import org.wahlzeit.model.CarManufacturer;
 import org.wahlzeit.services.ObjectManager;
 import org.wahlzeit.utils.DesignPattern;
 

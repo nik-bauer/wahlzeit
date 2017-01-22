@@ -2,7 +2,6 @@ package org.wahlzeit.model.car;
 
 
 import com.googlecode.objectify.annotation.Entity;
-import org.wahlzeit.model.CarManufacturer;
 import org.wahlzeit.services.DataObject;
 
 import static org.wahlzeit.utils.CustomAssert.assertNotNull;

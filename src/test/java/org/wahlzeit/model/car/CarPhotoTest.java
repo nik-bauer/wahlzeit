@@ -7,10 +7,6 @@ import org.junit.ClassRule;
 import org.junit.Test;
 import org.junit.rules.RuleChain;
 import org.junit.rules.TestRule;
-import org.wahlzeit.model.CarManufacturer;
-import org.wahlzeit.model.car.Car;
-import org.wahlzeit.model.car.CarPhoto;
-import org.wahlzeit.model.car.CarType;
 import org.wahlzeit.testEnvironmentProvider.LocalDatastoreServiceTestConfigProvider;
 
 public class CarPhotoTest {
