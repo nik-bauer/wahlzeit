@@ -18,6 +18,7 @@ public class Car extends DataObject {
     private int engineHP;
 
 
+    // Car creation step #4:
     /**
      * @methodtype constructor
      */

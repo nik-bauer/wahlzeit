@@ -33,6 +33,7 @@ public class CarManager extends ObjectManager {
     }
 
 
+    // Car creation step #2:
     public synchronized CarType getType(String name, CarManufacturer manufacturer) {
         if (carTypes.containsKey(name)) {
             return carTypes.get(name);
@@ -43,6 +44,7 @@ public class CarManager extends ObjectManager {
         }
     }
 
+    // Car creation step #1:
     public Car createCar(String type, String modelName, CarManufacturer manufacturer) {
         Car car = getType(type, manufacturer).createCar(modelName);
         cars.add(car);

@@ -23,6 +23,7 @@ public class CarType extends DataObject {
         this.manufacturer = manufacturer;
     }
 
+    // Car creation step #3:
     protected Car createCar(String modelName) {
         return new Car(modelName, this);
     }
