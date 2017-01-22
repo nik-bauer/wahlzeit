@@ -25,6 +25,7 @@ public class CarPhoto extends Photo {
     /**
      * @methodtype constructor
      */
+    // CarPhoto creation step #6:
     public CarPhoto(PhotoId id) {
         super(id);
     }

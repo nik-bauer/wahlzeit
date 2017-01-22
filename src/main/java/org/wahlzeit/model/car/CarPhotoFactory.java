@@ -1,6 +1,5 @@
 package org.wahlzeit.model.car;
 
-import org.wahlzeit.model.CarManufacturer;
 import org.wahlzeit.model.PhotoFactory;
 import org.wahlzeit.model.PhotoId;
 import org.wahlzeit.services.LogBuilder;
@@ -70,8 +69,10 @@ public class CarPhotoFactory extends PhotoFactory {
      * @methodtype factory
      * Creates a new photo with the specified id
      */
+    // CarPhoto creation step #4:
     public CarPhoto createPhoto(PhotoId id) {
         assertNotNull(id);
+        // CarPhoto creation step #5:
         return new CarPhoto(id);
     }
 

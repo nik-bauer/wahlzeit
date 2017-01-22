@@ -40,7 +40,9 @@ public class PhotoUtil {
 	/**
 	 * @methodtype creation
 	 */
+	// CarPhoto creation step #2:
 	public static Photo createPhoto(String filename, PhotoId id, Image uploadedImage) throws Exception {
+		// CarPhoto creation step #3:
 		Photo result = CarPhotoFactory.getInstance().createPhoto(id);
 		result.setEnding(filename.substring(filename.lastIndexOf(".") + 1));
 

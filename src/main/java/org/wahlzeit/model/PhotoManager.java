@@ -341,6 +341,7 @@ public class PhotoManager extends ObjectManager {
 	/**
 	 *
 	 */
+	// CarPhoto creation step #1:
 	public Photo createPhoto(String filename, Image uploadedImage) throws Exception {
 		PhotoId id = PhotoId.getNextId();
 		Photo result = PhotoUtil.createPhoto(filename, id, uploadedImage);
