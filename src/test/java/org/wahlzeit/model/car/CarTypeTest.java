@@ -4,6 +4,7 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.w3c.dom.ranges.Range;
+import org.wahlzeit.model.CarManufacturer;
 import org.wahlzeit.model.car.CarType;
 
 import static org.junit.Assert.*;
@@ -17,9 +18,9 @@ public class CarTypeTest {
 
     @Before
     public void setUp() {
-        sportsCar = new CarType("SportsCar");
-        superSportsCar = new CarType("SuperSportsCar");
-        racingCar = new CarType("RacingCar");
+        sportsCar = new CarType("SportsCar", CarManufacturer.JAGUAR);
+        superSportsCar = new CarType("SuperSportsCar", CarManufacturer.ASTON_MARTIN);
+        racingCar = new CarType("RacingCar", CarManufacturer.AUDI);
         sportsCar.addSubType(superSportsCar);
     }
 

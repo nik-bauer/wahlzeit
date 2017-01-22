@@ -39,7 +39,7 @@ public class CarManagerTest {
 
     @Test
     public void createCarTest() {
-        Car audiA3 = carManager.createCar("FullsizeCar", "AudiA3", CarManufacturer.AUDI);
+        Car audiA3 = carManager.createCar("FullsizeCar", "AudiA3",CarManufacturer.AUDI);
         Car audiA1 = carManager.createCar("CompactCar", "AudiA1", CarManufacturer.AUDI);
         Car vwPassat = carManager.createCar("FullsizeCar", "VWPassat", CarManufacturer.VOLKSWAGEN);
 

@@ -33,19 +33,18 @@ public class CarManager extends ObjectManager {
     }
 
 
-
-    public synchronized CarType getType(String name) {
+    public synchronized CarType getType(String name, CarManufacturer manufacturer) {
         if (carTypes.containsKey(name)) {
             return carTypes.get(name);
         } else {
-            CarType newType = new CarType(name);
+            CarType newType = new CarType(name, manufacturer);
             carTypes.put(name, newType);
             return newType;
         }
     }
 
     public Car createCar(String type, String modelName, CarManufacturer manufacturer) {
-        Car car = getType(type).createCar(modelName, manufacturer);
+        Car car = getType(type, manufacturer).createCar(modelName);
         cars.add(car);
         return car;
     }

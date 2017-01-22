@@ -26,7 +26,7 @@ public class CarPhotoFactoryTest {
     @Before
     public void setUp() {
         carPhotoFactory = CarPhotoFactory.getInstance();
-        quattroporte = new Car("Quattroporte", new CarType("GrandTourer"), CarManufacturer.MASERATI);
+        quattroporte = new Car("Quattroporte", new CarType("GrandTourer", CarManufacturer.MASERATI));
         quattroportePhoto = carPhotoFactory.createPhoto(PhotoId.NULL_ID, quattroporte);
     }
 

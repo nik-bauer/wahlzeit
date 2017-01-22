@@ -21,7 +21,7 @@ public class Car extends DataObject {
     /**
      * @methodtype constructor
      */
-    public Car(String modelName, CarType carType, CarManufacturer manufacturer) {
+    public Car(String modelName, CarType carType) {
         assertHasMinimumParameters(modelName, carType);
 
         this.modelName = modelName;
@@ -31,7 +31,7 @@ public class Car extends DataObject {
     /**
      * @methodtype constructor
      */
-    public Car(String modelName, CarType carType, CarManufacturer manufacturer, int productionYear, int numDoors, int numSeats, int engineHP) {
+    public Car(String modelName, CarType carType, int productionYear, int numDoors, int numSeats, int engineHP) {
         assertHasMinimumParameters(modelName, carType);
 
         this.modelName = modelName;

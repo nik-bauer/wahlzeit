@@ -15,16 +15,16 @@ public class CarType extends DataObject {
     @Serialize
     protected Set<CarType> subTypes = new HashSet<>();
     private final String name;
-    private String classification;
     private CarManufacturer manufacturer;
 
 
-    public CarType(String name) {
+    public CarType(String name, CarManufacturer manufacturer) {
         this.name = name;
+        this.manufacturer = manufacturer;
     }
 
-    protected Car createCar(String modelName, CarManufacturer manufacturer) {
-        return new Car(modelName, this, manufacturer);
+    protected Car createCar(String modelName) {
+        return new Car(modelName, this);
     }
 
     /**
@@ -49,10 +49,6 @@ public class CarType extends DataObject {
      */
     public String getName() {
         return name;
-    }
-
-    public String getClassification() {
-        return classification;
     }
 
     public CarManufacturer getManufacturer() {
@@ -95,10 +91,10 @@ public class CarType extends DataObject {
         return this.parentType;
     }
 
-    public void setClassification(String classification) {
-        this.classification = classification;
-    }
-
+    /**
+     * @methodtype setter
+     * @param manufacturer
+     */
     public void setManufacturer(CarManufacturer manufacturer) {
         this.manufacturer = manufacturer;
     }

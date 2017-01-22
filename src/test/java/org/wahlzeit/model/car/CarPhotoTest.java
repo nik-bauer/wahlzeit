@@ -24,7 +24,7 @@ public class CarPhotoTest {
     @Before
     public void setUp() {
         carPhoto = new CarPhoto();
-        audi_fullsize = new Car("AudiFullsize", new CarType("FullsizeCar"), CarManufacturer.AUDI);
+        audi_fullsize = new Car("AudiFullsize", new CarType("FullsizeCar", CarManufacturer.AUDI));
     }
 
     @Test
